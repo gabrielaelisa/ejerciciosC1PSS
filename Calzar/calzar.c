@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "calzar.h"
+
+int calzar(Nodo *a, Nodo **ppat) {
+	if(*ppat==NULL){
+		*ppat=a;
+		return 1;	
+		}
+	if(a==NULL){
+		return 0;
+		}
+	else if(a->x==(*ppat)->x){
+		
+		if(calzar(a->izq, &(*ppat)->izq))
+			{
+			return	calzar(a->der,&(*ppat)->der);	}
+				}
+	else{return 0;}
+}
